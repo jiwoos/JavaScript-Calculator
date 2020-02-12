@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <title> Calculator</title>
+  <style type="text/css">
+  body {
+  line-height: 1.5;
+  font-family: 'Open Sans Condensed', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+h2{
+  font-size: 35px;
+  text-align:center;
+}
+h3{
+  font-size: 35px;
+  text-align:center;
+}
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=radio] {
+  border-radius: 50%;
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="title">
+        <h1>
+      Calculator </h1>
+    </div>
+    <h1>
+    X: <input type="text" id="x" name="x" placeholder="your variable 1">
+    Y: <input type="text" id="y" name="y" placeholder="your variable 2"> </h1>
+
+      <h2>
+    +<input name="calc" id="add" value="add" type="radio">
+    -<input name="calc" id="subtract" value="subtract" type="radio">
+    ÷<input name="calc" id="divide" value="divide" type="radio">
+    x<input name="calc" id="multiply" value="multiply" type="radio"> </h2>
+    <div class="result"> 
+    <h3>  RESULT:       <output id="result"> </h3>
+
+      </output>
+    </div>
+    <script type="text/javascript">
+      var submit = document.getElementsByName('calc');
+      for (var i = 0; i < submit.length; i++) {
+        submit[i].addEventListener("click", calculate, false);
+      }
+      document.getElementById("x").addEventListener("change", calculate, false);
+      document.getElementById("y").addEventListener("change", calculate, false);
+      function calculate(x, y, calc) {
+        var x = parseFloat(document.getElementById("x").value);
+        var y = parseFloat(document.getElementById("y").value);
+        var result;
+          if (document.getElementById('add').checked) {
+            result = x + y;
+          }
+          if (document.getElementById('subtract').checked) {
+            result = x - y;
+          }
+          if (document.getElementById('divide').checked) {
+            if (y == 0) {
+              result = "undefined"
+            } else {
+              result = x / y;
+            }
+          }
+          if (document.getElementById('multiply').checked) {
+            result = x * y;
+          }
+          result = result + "";
+        
+        document.getElementById("result").textContent = result;
+      }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
